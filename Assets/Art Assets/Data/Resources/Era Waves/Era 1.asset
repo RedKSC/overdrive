@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67bd537071013d44088a5ca1d669c149, type: 3}
+  m_Name: Era 1
+  m_EditorClassIdentifier: 
+  Waves:
+  - MinActiveSpawners: 1
+    SpawnerDelayTime: {x: 2.5609756, y: 5}
+    MaxSpawnerDelayTime: 5
+    BaiterSpawnTime: {x: 13.263158, y: 20}
+    MaxBaiterSpawnTime: 20
+    Type: 1
+    PossiblePresets:
+    - {fileID: 11400000, guid: 6067650409dfd7849bed574dca3465d5, type: 2}
+    - {fileID: 11400000, guid: 97ed71a747b5351408950ecf753e714f, type: 2}
+    EnemiesInWave:
+    - Spawn: {fileID: 486164896422735863, guid: 41be03f4f558bfd489b2713147ced1ec, type: 3}
+      Count: 2
+  - MinActiveSpawners: 2
+    SpawnerDelayTime: {x: 2.317073, y: 4.695122}
+    MaxSpawnerDelayTime: 5
+    BaiterSpawnTime: {x: 15.157895, y: 20}
+    MaxBaiterSpawnTime: 20
+    Type: 1
+    PossiblePresets:
+    - {fileID: 11400000, guid: 97ed71a747b5351408950ecf753e714f, type: 2}
+    - {fileID: 11400000, guid: 6067650409dfd7849bed574dca3465d5, type: 2}
+    - {fileID: 11400000, guid: f5d592b0d327a7c479dc0c02635516a1, type: 2}
+    EnemiesInWave:
+    - Spawn: {fileID: 486164896422735863, guid: 41be03f4f558bfd489b2713147ced1ec, type: 3}
+      Count: 16
+  - MinActiveSpawners: 2
+    SpawnerDelayTime: {x: 2.317073, y: 4.695122}
+    MaxSpawnerDelayTime: 5
+    BaiterSpawnTime: {x: 10.947369, y: 17.473684}
+    MaxBaiterSpawnTime: 20
+    Type: 1
+    PossiblePresets:
+    - {fileID: 11400000, guid: 97ed71a747b5351408950ecf753e714f, type: 2}
+    - {fileID: 11400000, guid: 6067650409dfd7849bed574dca3465d5, type: 2}
+    - {fileID: 11400000, guid: f5d592b0d327a7c479dc0c02635516a1, type: 2}
+    EnemiesInWave:
+    - Spawn: {fileID: 486164896422735863, guid: 41be03f4f558bfd489b2713147ced1ec, type: 3}
+      Count: 25
+  - MinActiveSpawners: 2
+    SpawnerDelayTime: {x: 2.317073, y: 4.695122}
+    MaxSpawnerDelayTime: 5
+    BaiterSpawnTime: {x: 8.210526, y: 14.947368}
+    MaxBaiterSpawnTime: 15
+    Type: 1
+    PossiblePresets:
+    - {fileID: 11400000, guid: 97ed71a747b5351408950ecf753e714f, type: 2}
+    - {fileID: 11400000, guid: fb88f8a492d5cd7449ee1ef2fb63a1a6, type: 2}
+    - {fileID: 11400000, guid: f5d592b0d327a7c479dc0c02635516a1, type: 2}
+    EnemiesInWave:
+    - Spawn: {fileID: 486164896422735863, guid: 41be03f4f558bfd489b2713147ced1ec, type: 3}
+      Count: 8
+    - Spawn: {fileID: 5137904381006137542, guid: e0fa4ae4c174034429b053a226551aa2, type: 3}
+      Count: 4
+  - MinActiveSpawners: 3
+    SpawnerDelayTime: {x: 2.317073, y: 4.695122}
+    MaxSpawnerDelayTime: 5
+    BaiterSpawnTime: {x: 8.210526, y: 14.947368}
+    MaxBaiterSpawnTime: 15
+    Type: 1
+    PossiblePresets:
+    - {fileID: 11400000, guid: 97ed71a747b5351408950ecf753e714f, type: 2}
+    - {fileID: 11400000, guid: fb88f8a492d5cd7449ee1ef2fb63a1a6, type: 2}
+    - {fileID: 11400000, guid: f5d592b0d327a7c479dc0c02635516a1, type: 2}
+    EnemiesInWave:
+    - Spawn: {fileID: 486164896422735863, guid: 41be03f4f558bfd489b2713147ced1ec, type: 3}
+      Count: 20
+    - Spawn: {fileID: 5137904381006137542, guid: e0fa4ae4c174034429b053a226551aa2, type: 3}
+      Count: 8
+  - MinActiveSpawners: 2
+    SpawnerDelayTime: {x: 0.7358491, y: 2.7326734}
+    MaxSpawnerDelayTime: 3
+    BaiterSpawnTime: {x: 5.894737, y: 10}
+    MaxBaiterSpawnTime: 12
+    Type: 1
+    PossiblePresets:
+    - {fileID: 11400000, guid: 1c88917f7e6e367439c0d643d8cab6d4, type: 2}
+    - {fileID: 11400000, guid: fb88f8a492d5cd7449ee1ef2fb63a1a6, type: 2}
+    EnemiesInWave:
+    - Spawn: {fileID: 486164896422735863, guid: 41be03f4f558bfd489b2713147ced1ec, type: 3}
+      Count: 26
+    - Spawn: {fileID: 5137904381006137542, guid: e0fa4ae4c174034429b053a226551aa2, type: 3}
+      Count: 8
+  - MinActiveSpawners: 2
+    SpawnerDelayTime: {x: 0.7358491, y: 2.7326734}
+    MaxSpawnerDelayTime: 3
+    BaiterSpawnTime: {x: 5.894737, y: 10}
+    MaxBaiterSpawnTime: 12
+    Type: 1
+    PossiblePresets:
+    - {fileID: 11400000, guid: 1c88917f7e6e367439c0d643d8cab6d4, type: 2}
+    - {fileID: 11400000, guid: 03ca04cc9f72ce8418c4b04f7fd25a56, type: 2}
+    EnemiesInWave:
+    - Spawn: {fileID: 486164896422735863, guid: 41be03f4f558bfd489b2713147ced1ec, type: 3}
+      Count: 15
+    - Spawn: {fileID: 1959144736817367819, guid: f418fd01fc138624aad03801291f84ab, type: 3}
+      Count: 1
+  - MinActiveSpawners: 3
+    SpawnerDelayTime: {x: 0.7358491, y: 2.7326734}
+    MaxSpawnerDelayTime: 3
+    BaiterSpawnTime: {x: 5.894737, y: 10}
+    MaxBaiterSpawnTime: 12
+    Type: 1
+    PossiblePresets:
+    - {fileID: 11400000, guid: 1c88917f7e6e367439c0d643d8cab6d4, type: 2}
+    - {fileID: 11400000, guid: 03ca04cc9f72ce8418c4b04f7fd25a56, type: 2}
+    - {fileID: 11400000, guid: 7f5ea0fc56f287b40b283d06e7d909fe, type: 2}
+    EnemiesInWave:
+    - Spawn: {fileID: 486164896422735863, guid: 41be03f4f558bfd489b2713147ced1ec, type: 3}
+      Count: 15
+    - Spawn: {fileID: 1959144736817367819, guid: f418fd01fc138624aad03801291f84ab, type: 3}
+      Count: 2
+  - MinActiveSpawners: 3
+    SpawnerDelayTime: {x: 0.7358491, y: 2.7326734}
+    MaxSpawnerDelayTime: 5
+    BaiterSpawnTime: {x: 5.894737, y: 10}
+    MaxBaiterSpawnTime: 12
+    Type: 1
+    PossiblePresets:
+    - {fileID: 11400000, guid: 1c88917f7e6e367439c0d643d8cab6d4, type: 2}
+    - {fileID: 11400000, guid: 03ca04cc9f72ce8418c4b04f7fd25a56, type: 2}
+    - {fileID: 11400000, guid: 7f5ea0fc56f287b40b283d06e7d909fe, type: 2}
+    - {fileID: 11400000, guid: fb88f8a492d5cd7449ee1ef2fb63a1a6, type: 2}
+    EnemiesInWave:
+    - Spawn: {fileID: 486164896422735863, guid: 41be03f4f558bfd489b2713147ced1ec, type: 3}
+      Count: 20
+    - Spawn: {fileID: 1959144736817367819, guid: f418fd01fc138624aad03801291f84ab, type: 3}
+      Count: 2
+    - Spawn: {fileID: 5137904381006137542, guid: e0fa4ae4c174034429b053a226551aa2, type: 3}
+      Count: 8
+  - MinActiveSpawners: 1
+    SpawnerDelayTime: {x: 0.7358491, y: 2.7326734}
+    MaxSpawnerDelayTime: 3
+    BaiterSpawnTime: {x: 5.894737, y: 10}
+    MaxBaiterSpawnTime: 12
+    Type: 1
+    PossiblePresets:
+    - {fileID: 11400000, guid: b21cd729d84b4114391ea2cb8270bd37, type: 2}
+    EnemiesInWave:
+    - Spawn: {fileID: 5008268744210856826, guid: 19b1c12b84f9d634083d0fa8db15a3fb, type: 3}
+      Count: 1

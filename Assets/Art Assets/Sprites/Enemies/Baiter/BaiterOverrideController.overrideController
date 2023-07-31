@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BaiterOverrideController
+  m_Controller: {fileID: 9100000, guid: b941978cc68e8de42bfe86e5516d1110, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: a4997903ceae8c34d9d0fe7f0a62b922, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2ec7b8955e66b8a4ebeb4e3ef6030887, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 61fc900555f95e048b8df742ce595712, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0166891d532208145be0c391953c3fb8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6287ea9a3ea7db040bf03a47d8b57f29, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 775b7adb2f43ee14fabd5c77196a467e, type: 2}

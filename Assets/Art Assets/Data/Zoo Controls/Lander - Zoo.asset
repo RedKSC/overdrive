@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3819e5884e661b346bcbdded748c5ef1, type: 3}
+  m_Name: Lander - Zoo
+  m_EditorClassIdentifier: 
+  EntityName: Lander
+  ObjectOverride: {fileID: 0}
+  Anim: {fileID: 9100000, guid: b941978cc68e8de42bfe86e5516d1110, type: 2}
+  Controls:
+  - ControlName: Fire
+    ControlType: 3
+  - ControlName: Hurt
+    ControlType: 3

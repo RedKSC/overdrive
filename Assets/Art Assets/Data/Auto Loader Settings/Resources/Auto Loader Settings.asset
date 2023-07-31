@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede63ce8647f3f34db1c7bd5a9304dac, type: 3}
+  m_Name: Auto Loader Settings
+  m_EditorClassIdentifier: 
+  Objects:
+  - {fileID: 3029241395959327994, guid: a6929f1a74fa1fe4c9f50c2211bbb88a, type: 3}
+  - {fileID: 27430426776463341, guid: a751c31b3db553c4d82fce2aa047233b, type: 3}
+  - {fileID: 5812055169370389835, guid: 2e48949d7cd6f9f41bf29784955550f0, type: 3}
+  - {fileID: 5937308298081539262, guid: 749515d002a79a54eb3de7ee3840d4cc, type: 3}
+  - {fileID: 7638070788320453999, guid: f8504db6629710049bf43ce8f64513c6, type: 3}
+  - {fileID: 5928741087868311651, guid: 3bc78c3c1ce5fa44c931aa09eadc6ded, type: 3}
+  - {fileID: 3984609478475097835, guid: 1112e2ef698e10f4d9386e07ef25dc07, type: 3}
+  - {fileID: 5146267204870963007, guid: a3f5d3cffd6b4d946829bb20afd90af4, type: 3}

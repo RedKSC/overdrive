@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3819e5884e661b346bcbdded748c5ef1, type: 3}
+  m_Name: Grounder - Zoo
+  m_EditorClassIdentifier: 
+  EntityName: Grounder
+  ObjectOverride: {fileID: 6600408320297934243, guid: f4f4295d8b6a5fe46a5e6f9065c9788c, type: 3}
+  Anim: {fileID: 9100000, guid: 8d6afe5478fb3fe4ba14c564024c8f2b, type: 2}
+  Controls:
+  - ControlName: Start Digging
+    ControlType: 3
+  - ControlName: Stop Digging
+    ControlType: 3

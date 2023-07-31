@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f64430c5d8e51d4983e90d9577872d0, type: 3}
+  m_Name: Stunwave
+  m_EditorClassIdentifier: 
+  weaponName: Stunwave
+  GFX: {fileID: -73511353, guid: 040e791f4769dbd43911e0b04bc69879, type: 3}
+  coderunner: {fileID: 826777786864146698, guid: 753dd4a45c71f644995cf3716c4a88cd, type: 3}
+  Description: Stop enemies in their tracks. More effective on small fry.
+  color: 3
+  level: 1
+  rarity: 1

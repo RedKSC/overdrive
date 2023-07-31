@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd14fc30d004417a423cfdef2bd9ccf, type: 3}
+  m_Name: UIButtonIdDatabase
+  m_EditorClassIdentifier: 
+  Database:
+    Items:
+    - Category: FileSelect
+      Name: File1
+    - Category: FileSelect
+      Name: File2
+    - Category: FileSelect
+      Name: File3
+    - Category: Global
+      Name: Back
+    - Category: Global
+      Name: Exit
+    - Category: Global
+      Name: No
+    - Category: Global
+      Name: Yes
+    - Category: Main
+      Name: Options
+    - Category: Main
+      Name: Start
+    - Category: Main
+      Name: Zoo
+    - Category: None
+      Name: None
