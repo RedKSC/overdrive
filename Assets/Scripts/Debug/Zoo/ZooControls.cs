@@ -1,7 +1,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "ZooControls", menuName = "Not OmniDefender/Zoo Controls")]
+[CreateAssetMenu(fileName = "ZooControls", menuName = "Overdrive/Zoo Controls")]
 public class ZooControls : ScriptableObject {
     [Required]
     public string EntityName;

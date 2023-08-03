@@ -1,7 +1,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "ShopItem", menuName = "RPM/Game/Shop Item")]
+[CreateAssetMenu(fileName = "ShopItem", menuName = "Overdrive/Game/Shop Item")]
 public class ShopItem : ScriptableObject {
     [LabelText("Name")]
     public string ItemName;

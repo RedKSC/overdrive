@@ -18,5 +18,7 @@ MonoBehaviour:
   Controls:
   - ControlName: Fire
     ControlType: 3
+    OverrideControl: {fileID: 0}
   - ControlName: Hurt
     ControlType: 3
+    OverrideControl: {fileID: 0}

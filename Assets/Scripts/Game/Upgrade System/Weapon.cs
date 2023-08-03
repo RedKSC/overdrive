@@ -9,7 +9,7 @@ public enum weaponColor {
     Pink
 }
 
-[CreateAssetMenu(fileName = "Weapon", menuName = "RPM/Game/Weapon")]
+[CreateAssetMenu(fileName = "Weapon", menuName = "Overdrive/Game/Weapon")]
 public class Weapon : ScriptableObject {
     [LabelText("Name")]
     public string weaponName;

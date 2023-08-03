@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(menuName = "Game/Era Waves")]
+[CreateAssetMenu(menuName = "Overdrive/Game/Era Waves")]
 public class EraWaves : ScriptableObject {
     [ListDrawerSettings(NumberOfItemsPerPage = 1)]
     public EnemyWave[] Waves;
