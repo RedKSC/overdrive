@@ -23,7 +23,7 @@ public class Grounder : ODEnemy {
     float birthTime;
     float groundTime;
     Vector2 velDir;
-    CensusTaker cs;
+    
 
     public override void Awake() {
         base.Awake();
@@ -32,7 +32,7 @@ public class Grounder : ODEnemy {
     public override void Start() {
         velDir.x = Mathf.Sign(Random.Range(-1f, 1f));
         velDir.y = Mathf.Sign(Random.Range(-1f, 1f));
-        cs = CensusTaker.Instance;
+        
     }
     public override void Update() {
         base.Update();
@@ -153,16 +153,5 @@ public class Grounder : ODEnemy {
         bullet.velocity = vel;
     }
 
-    public Planet NearestPlanet() {
-        float closestDist = float.MaxValue;
-        Planet closestPlanet = null;
-        for (int i = 0; i < cs.planets.Count; i++) {
-            float thisDist = cs.OffsetCyclical(transform.position.ConvertTo2D(), cs.planets[i].transform.position.ConvertTo2D()).magnitude;
-            if (thisDist < closestDist) {
-                closestDist = thisDist;
-                closestPlanet = cs.planets[i];
-            }
-        }
-        return closestPlanet;
-    }
+    
 }

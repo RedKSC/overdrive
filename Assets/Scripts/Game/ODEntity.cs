@@ -30,6 +30,7 @@ public class ODEntity : AlkylEntity
     [FoldoutGroup("SFX")] public AudioClip killSound;
 
     [HideInInspector] public bool killed;
+    [HideInInspector] public CensusTaker cs;
 
     public delegate void OnEntityDestroyedEvent();
     public event OnEntityDestroyedEvent OnEntDestroyed;
@@ -76,6 +77,11 @@ public class ODEntity : AlkylEntity
             stunTimeMax = 0.1f;
             Mode = 4;
         }
+    }
+
+    public override void Start() {
+        cs = CensusTaker.Instance;
+        base.Start();
     }
 
     void OnApplicationQuit() {
@@ -129,4 +135,20 @@ public class ODEntity : AlkylEntity
 
     public virtual void AnimFunc1() {}
     public virtual void AnimFunc2() { }
+
+    public Planet NearestPlanet() {
+        if(cs == null) {
+            cs = CensusTaker.Instance;
+        }
+        float closestDist = float.MaxValue;
+        Planet closestPlanet = null;
+        for (int i = 0; i < cs.planets.Count; i++) {
+            float thisDist = cs.OffsetCyclical(transform.position.ConvertTo2D(), cs.planets[i].transform.position.ConvertTo2D()).magnitude;
+            if (thisDist < closestDist) {
+                closestDist = thisDist;
+                closestPlanet = cs.planets[i];
+            }
+        }
+        return closestPlanet;
+    }
 }

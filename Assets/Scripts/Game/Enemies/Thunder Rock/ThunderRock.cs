@@ -28,7 +28,6 @@ public class ThunderRock : ODEnemy {
 
     PlayerController playerTarget;
     float randomMovementLast;
-    CensusTaker cs;
 
     public override void Awake() {
         base.Awake();

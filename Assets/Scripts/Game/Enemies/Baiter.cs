@@ -19,8 +19,6 @@ public class Baiter : ODEnemy
 
     [FoldoutGroup("Resources")] public GameObject normalBullet;
 
-    CensusTaker cs;
-
     PlayerController playerTarget;
     float randomMovementLast;
 

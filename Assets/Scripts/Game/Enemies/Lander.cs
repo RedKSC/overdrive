@@ -25,9 +25,6 @@ public class Lander : ODEnemy
     float randomMovementLast;
     float birthTime;
     Vector2 velDir;
-
-    CensusTaker cs;
-
     public override void Awake() {
         base.Awake();
         birthTime = GameManager.Instance.unpausedTime;

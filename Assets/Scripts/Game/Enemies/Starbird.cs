@@ -24,8 +24,6 @@ public class Starbird : ODEnemy
     [FoldoutGroup("Resources")] public VisualEffect rushFX;
     [FoldoutGroup("Resources")] public GameObject hb;
 
-    CensusTaker cs;
-
     PlayerController playerTarget;
     float randomMovementLast;
     int fireSpurtNum;

@@ -19,7 +19,6 @@ public class Mutant : ODEnemy
 
     PlayerController playerTarget;
     Vector2 velDir;
-    CensusTaker cs;
 
     public override void Awake() {
         base.Awake();

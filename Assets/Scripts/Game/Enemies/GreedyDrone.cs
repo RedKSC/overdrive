@@ -22,8 +22,6 @@ public class GreedyDrone : ODEnemy
     [FoldoutGroup("Resources")] public Animator CannonAnim;
     [FoldoutGroup("Resources")] public Animator JetAnim;
 
-    CensusTaker cs;
-
     PlayerController playerTarget;
     float randomMovementLast;
 

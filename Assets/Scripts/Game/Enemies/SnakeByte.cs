@@ -26,8 +26,6 @@ public class SnakeByte : ODEnemy
     [FoldoutGroup("Resources")] public SnakeByte tail;
     [FoldoutGroup("Resources")] public GameObject snakeByte;
 
-    CensusTaker cs;
-
     public override void Awake() {
         base.Awake();
 
