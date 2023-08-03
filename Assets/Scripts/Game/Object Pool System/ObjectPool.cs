@@ -14,43 +14,45 @@ public class ObjectPool : MonoBehaviour {
     }
     static ObjectPool instance;
 
-    Dictionary<string, int> poolLookup = new Dictionary<string, int>();
-
-    Dictionary<int, Queue<GameObject>> pools = new Dictionary<int, Queue<GameObject>>();
+    readonly Dictionary<string, Queue<GameObject>> poolLookup = new();
+    readonly Dictionary<Queue<GameObject>, ObjectPoolData> poolDataLookup = new();
 
     //Creates and initializes an object pool
-    public int CreateObjectPool(ObjectPoolData dta, bool initialize = true) {
+    public void CreateObjectPool(ObjectPoolData dta, bool initialize = true) {
         if (poolLookup.ContainsKey(dta.Key)) {
             Debug.LogWarning($"Object pool with the key '{dta.Key}' already exists!", gameObject);
-            return -1;
+            return;
         }
 
-        int hash = dta.Key.GetHashCode();
-
-        poolLookup.Add(dta.Key, hash);
-
-        pools.Add(hash, new Queue<GameObject>());
+        poolLookup.Add(dta.Key, new Queue<GameObject>());
+        poolDataLookup.Add(poolLookup[dta.Key], dta);
 
         if (initialize) {
-            InitializePool(hash, dta.Object, dta.InitialCount);
+            InitializePool(dta.Key, dta.Object, dta.InitialCount);
         }
-
-        return hash;
     }
 
     //Dequeues the next object in the list and returns it
-    public GameObject GetNextObject(string pool) {
-        if (!poolLookup.ContainsKey(pool)) {
+    public GameObject GetNextObject(string poolKey) {
+        if (!poolLookup.ContainsKey(poolKey)) {
             return null;
         }
 
-        int key = poolLookup[pool];
+        Queue<GameObject> pool = poolLookup[poolKey];
 
-        if (pools[key].Count <= 0) {
+        if (pool.Count <= 0) {
+            ObjectPoolData data = poolDataLookup[pool];
+
+            if (data.AutoReinitialize) {
+                InitializePool(data.Key, data.Object, data.InitialCount);
+                return pool.Dequeue();
+            }
+
+            Debug.LogWarning($"Pool {data.Key}' is out of objects! No more will spawn");
             return null;
         }
 
-        GameObject go = pools[key].Dequeue();
+        GameObject go = pool.Dequeue();
 
         return go;
     }
@@ -65,10 +67,10 @@ public class ObjectPool : MonoBehaviour {
     }
     
     //Spawns a given number of objects and adds them to the given object pool
-    public void InitializePool(int poolID, GameObject obj, int count) {
+    public void InitializePool(string poolID, GameObject obj, int count) {
         for (int i = 0; i < count; i++) {
             GameObject go = CreateNewObj(obj);
-            pools[poolID].Enqueue(go);
+            poolLookup[poolID].Enqueue(go);
         }
     }
 }

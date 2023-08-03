@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ff44f77a953d694fada8d0acac011ce, type: 3}
-  m_Name: New Object Pool Data
+  m_Name: Test Pool
   m_EditorClassIdentifier: 
   Object: {fileID: 0}
-  Key: 
-  InitialCount: 0
+  Key: Test-Obj
+  InitialCount: 20
+  AutoReinitialize: 1
