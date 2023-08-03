@@ -991,7 +991,8 @@ MonoBehaviour:
   droneToSpawnInBurst: 5
   droneMaxCount: 10
   timeBtwnDroneSpawns: 1
-  timeBtwnDroneBursts: 7
+  timeBtwnDroneBursts: 8
+  timeBtwnDroneBurstsThird: 15
   stunWaveTimeMax: 10
   fireSpeed: 12
   hpThreshToStartEatingPlanets: 225
@@ -1003,6 +1004,7 @@ MonoBehaviour:
   randomMovementLast: 0
   droneSpawnedLast: 0
   droneBurstLast: 0
+  droneBursts: 0
   droneSpawnedInBurst: 0
   droneCurrentNum: 0
   droneTotalNum: 0

@@ -146,12 +146,15 @@ public class Greedy : ODEnemy
         }
 
         //Throw out Stunwave after certain time period
-        if(GameManager.Instance.timeSince(stunWaveTimeLast) > stunWaveTimeMax && !attackingWithWave && subState != subStates.DestroyPlanet) {
+        if(GameManager.Instance.timeSince(stunWaveTimeLast) > stunWaveTimeMax && !attackingWithWave && subState == subStates.MoveRandomly) {
             StartCoroutine(UseStunWave());
         }
 
         //Try eating planet after certain time period (if health is less than thresh and not currently attacking with Stunwave)
-        if(simpleHealth < hpThreshToStartEatingPlanets && GameManager.Instance.timeSince(planetEatingTimeWaitStart) > planetEatingTimeWaitMax && !attackingWithWave) {
+        if(subState == subStates.MoveRandomly 
+            && simpleHealth < hpThreshToStartEatingPlanets 
+            && GameManager.Instance.timeSince(planetEatingTimeWaitStart) > planetEatingTimeWaitMax 
+            && !attackingWithWave) {
             subState = subStates.MoveTwdPlanet;
             planetEatingTimeWaitMax = Random.Range(planetEatingTimeRange.x, planetEatingTimeRange.y);
         }
