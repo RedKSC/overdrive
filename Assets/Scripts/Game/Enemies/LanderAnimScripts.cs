@@ -11,4 +11,7 @@ public class LanderAnimScripts : MonoBehaviour
     public void AnimFunc1() {
         lander.AnimFunc1();
     }
+    public void AnimFunc2() {
+        lander.AnimFunc2();
+    }
 }

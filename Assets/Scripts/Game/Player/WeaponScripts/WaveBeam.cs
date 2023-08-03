@@ -20,7 +20,7 @@ public class WaveBeam : PlayerWeaponBase
             WaveBullet bullet = Instantiate(normalBullet, pos, Quaternion.identity).GetComponent<WaveBullet>();
             bullet.velocity = vel;
             bullet.transform.localScale = playertrans.localScale;
-            bullet.damage = weaponData.level + 1;
+            bullet.damage = weaponData.level*2 + 1;
 
             bullet.t = 180 * i;
         }

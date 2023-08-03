@@ -326,12 +326,12 @@ public class PlayerController : ODEntity
         */
     }
 
-    public override void OnHurt(float damage, Vector2 knockbackSpd, float stunTime, DamageType type, float burn, float knockbackOverride) {
+    public override void OnHurt(float damage, Vector2 knockbackSpd, float stunTime, DamageType type, float burn, float knockbackOverride, Hurtbox hurtbox = null) {
         if (GameManager.Instance.timeSince(invincibleTimeStart) > invincibleTimeMax) {
             if (Mode == 2) Mode = 1;
             base.OnHurt(damage, knockbackSpd, stunTime, type, burn, knockbackOverride);
             invincibleTimeStart = GameManager.Instance.unpausedTime;
-            invincibleTimeMax = 0.5f;
+            invincibleTimeMax = 1;
         }
     }
 }

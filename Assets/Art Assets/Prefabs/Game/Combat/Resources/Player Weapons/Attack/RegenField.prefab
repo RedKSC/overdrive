@@ -52,7 +52,7 @@ MonoBehaviour:
   phase2: {fileID: 2241219309370980603}
   phase3: {fileID: 2241219309005685285}
   persistTime: 15
-  healTime: 2
+  healTime: 1.3
   healAmount: 1
   speed: 0
   angle: 0
@@ -72,7 +72,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.3
+  m_Radius: 2
 --- !u!50 &7478547949396025980
 Rigidbody2D:
   serializedVersion: 4

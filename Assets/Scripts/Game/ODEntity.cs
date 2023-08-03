@@ -34,7 +34,7 @@ public class ODEntity : AlkylEntity
     public delegate void OnEntityDestroyedEvent();
     public event OnEntityDestroyedEvent OnEntDestroyed;
 
-    Vector3 artInitPos;
+    [HideInInspector] public Vector3 artInitPos;
     public override void Awake() {
         base.Awake();
         if(anim == null) {
@@ -106,7 +106,7 @@ public class ODEntity : AlkylEntity
         }
     }
 
-    public virtual void OnHurt(float damage, Vector2 knockbackSpd, float stunTime, DamageType type, float burn, float knockbackOverride) {
+    public virtual void OnHurt(float damage, Vector2 knockbackSpd, float stunTime, DamageType type, float burn, float knockbackOverride, Hurtbox hurtbox = null) {
         if(simpleHealth <= 0) { return; }
 
         simpleHealth -= damage;
@@ -128,4 +128,5 @@ public class ODEntity : AlkylEntity
     }
 
     public virtual void AnimFunc1() {}
+    public virtual void AnimFunc2() { }
 }

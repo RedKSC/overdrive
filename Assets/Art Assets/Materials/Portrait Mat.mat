@@ -46,7 +46,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CA_Amount: 0.4089475
+    - _CA_Amount: 0.17498547
     - _ColorMask: 0
     - _Offset_Speed: 0.15
     - _Offset_Strength: 0.03

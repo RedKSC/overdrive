@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 206181224044340548}
   - component: {fileID: 4066055015203641915}
   - component: {fileID: 4006762046795142713}
+  - component: {fileID: 4888699388245794146}
   m_Layer: 8
   m_Name: EnemyBullet - StunWave
   m_TagString: Untagged
@@ -143,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  relativeKnockback: 0
   knockbackSpd: {x: 0, y: 0}
   knockbackInfluence: 1
   stunTime: 2
@@ -152,11 +154,24 @@ MonoBehaviour:
   DestroyIfNotKilled: 0
   knockbackMult: 0
   velocity: {x: 0, y: 0}
-  lifeTime: 0.7
+  lifeTime: 0.5
   destroyOnHit: 0
   birthTime: 0
   startSize: {x: 1, y: 0.75, z: 0}
-  endSize: {x: 2, y: 2.4, z: 0}
+  endSize: {x: 1.66, y: 2, z: 0}
+--- !u!114 &4888699388245794146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194930147981825086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d5f31565405ab244ba5982ce5d0363e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  copies: []
 --- !u!1001 &1376828656058396126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -322,11 +337,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328064471884978429, guid: 29bbc98db83e7a2449c1f48807a2d232, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.x
-      value: 1.2475283
+      value: 4.583943
       objectReference: {fileID: 0}
     - target: {fileID: 2328064471884978429, guid: 29bbc98db83e7a2449c1f48807a2d232, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.y
-      value: 3.8014605
+      value: 2.84599
       objectReference: {fileID: 0}
     - target: {fileID: 2328064471884978429, guid: 29bbc98db83e7a2449c1f48807a2d232, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[3].m_Value.x

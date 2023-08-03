@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
+  damageResist: 0
 --- !u!1 &1140021617393808970
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +192,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &4486955646294257756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,6 +397,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &203738732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,7 +532,7 @@ MonoBehaviour:
   Type: 0
   SubType: 0
   velocity: {x: 0, y: 0}
-  maxHealth: 3
+  maxHealth: 6
   StunResist: 1
   KnockbackResist: 0
   simpleHealth: 4
@@ -546,6 +549,7 @@ MonoBehaviour:
   audioSource: {fileID: 7411783826447010914}
   killSound: {fileID: 8300000, guid: 7875af297b0cac347b6229d42a139c49, type: 3}
   killed: 0
+  artInitPos: {x: 0, y: 0, z: 0}
   maxhor: 4
   accelhor: 0.1
   decelhor: 0.1
@@ -750,6 +754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 4
+  relativeKnockback: 0
   knockbackSpd: {x: 2, y: 0}
   knockbackInfluence: 0
   stunTime: 0.2

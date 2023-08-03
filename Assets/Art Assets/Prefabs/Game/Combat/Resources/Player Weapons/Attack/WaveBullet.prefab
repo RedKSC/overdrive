@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44c9397a9a20454eaabc68f8ba2c8cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 3
   relativeKnockback: 0
   knockbackSpd: {x: 0, y: 0}
   knockbackInfluence: 0
