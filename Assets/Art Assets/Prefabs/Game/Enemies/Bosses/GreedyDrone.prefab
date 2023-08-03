@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &871011797
 Transform:
   m_ObjectHideFlags: 0
@@ -482,6 +482,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   killSound: {fileID: 0}
   killed: 0
+  cs: {fileID: 0}
   artInitPos: {x: 0, y: 0, z: 0}
   finder: {fileID: 0}
   spawner: {fileID: 0}

@@ -988,26 +988,31 @@ MonoBehaviour:
   randomMovementVariance: {x: 5, y: 8}
   movement: {x: 0, y: 0}
   lowerShipState: 0
-  fireRate: 0.9
+  droneToSpawnInBurst: 5
+  droneMaxCount: 10
+  timeBtwnDroneSpawns: 1
+  timeBtwnDroneBursts: 7
+  stunWaveTimeMax: 10
   fireSpeed: 12
-  loopBackRange: 25
-  droneMaxCount: 5
-  timeBtwnDroneSpawns: 0.7
-  firstDroneNumberThresh: 7
-  secondDroneNumberThresh: 0
-  hpThreshToStartEatingPlanets: 0
+  hpThreshToStartEatingPlanets: 225
   planetGrabOffset: 5
-  groundingTimeMax: 10
+  planetDestroyTimeMax: 10
   punishmentWhileEatingPlanetMax: 60
+  planetEatingTimeRange: {x: 7, y: 10}
   fireTime: 0
-  subState: 0
   randomMovementLast: 0
   droneSpawnedLast: 0
+  droneBurstLast: 0
+  droneSpawnedInBurst: 0
   droneCurrentNum: 0
   droneTotalNum: 0
   attackingWithWave: 0
   planetTarget: {fileID: 0}
   punishmentRecievedWhileEatingPlanet: 0
+  planetEatingTimeWaitStart: 0
+  planetEatingTimeWaitMax: 0
+  rechargingDrones: 0
+  stunWaveTimeLast: 0
   normalBullet: {fileID: 4274434606229763186, guid: aa53042125f34c345a8bf85b7c30325a, type: 3}
   homingBullet: {fileID: 3339030611109274996, guid: cc40c57a486e80246bde8a8588eae8b2, type: 3}
   stunBullet: {fileID: 194930147981825086, guid: e7b6e5103fb66ef43b03fc90fe8ab8dd, type: 3}

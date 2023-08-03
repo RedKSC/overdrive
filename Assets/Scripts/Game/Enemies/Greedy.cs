@@ -16,30 +16,41 @@ public class Greedy : ODEnemy
     [FoldoutGroup("MovementVars")] public Vector2 movement;
     [FoldoutGroup("MovementVars")] public int lowerShipState;
 
-    [FoldoutGroup("CombatParams")] public float fireRate;
-    [FoldoutGroup("CombatParams")] public float fireSpeed;
-    [FoldoutGroup("CombatParams")] public float loopBackRange;
-    [FoldoutGroup("CombatParams")] public float droneMaxCount;
+    #region combat params
+    [FoldoutGroup("CombatParams")] public float droneToSpawnInBurst; //How many to make in a burst
+    [FoldoutGroup("CombatParams")] public float droneMaxCount;   //How many can exist at all
     [FoldoutGroup("CombatParams")] public float timeBtwnDroneSpawns;
-    [FoldoutGroup("CombatParams")] public int firstDroneNumberThresh; //For charge lightning attack
-    [FoldoutGroup("CombatParams")] public int secondDroneNumberThresh; //For finding planet to absorb if one exists
+    [FoldoutGroup("CombatParams")] public float timeBtwnDroneBursts;
+    [FoldoutGroup("CombatParams")] public float timeBtwnDroneBurstsThird;
+
+    [FoldoutGroup("CombatParams")] public float stunWaveTimeMax;
+    [FoldoutGroup("CombatParams")] public float fireSpeed;
+
     [FoldoutGroup("CombatParams")] public int hpThreshToStartEatingPlanets;
     [FoldoutGroup("CombatParams")] public float planetGrabOffset;
-    [FoldoutGroup("CombatParams")] public float groundingTimeMax;
+    [FoldoutGroup("CombatParams")] public float planetDestroyTimeMax;
     [FoldoutGroup("CombatParams")] public float punishmentWhileEatingPlanetMax;
     [FoldoutGroup("CombatParams")] public Vector2 planetEatingTimeRange;
 
+    #endregion
+
     [FoldoutGroup("CombatVars")] public float fireTime;
-    [FoldoutGroup("CombatVars")] public int subState;
+    [FoldoutGroup("CombatVars")] subStates subState;
     [FoldoutGroup("CombatVars")] public float randomMovementLast;
     [FoldoutGroup("CombatVars")] public float droneSpawnedLast;
-    [FoldoutGroup("CombatVars")] public float droneCurrentNum;
-    [FoldoutGroup("CombatVars")] public float droneTotalNum;
+    [FoldoutGroup("CombatVars")] public float droneBurstLast;
+    [FoldoutGroup("CombatVars")] public float droneBursts;
+    [FoldoutGroup("CombatVars")] public float droneSpawnedInBurst; //Drones made in current burst
+    [FoldoutGroup("CombatVars")] public float droneCurrentNum; //Currently active drones
+    [FoldoutGroup("CombatVars")] public float droneTotalNum;   //All drones ever made
     [FoldoutGroup("CombatVars")] public bool attackingWithWave;
     [FoldoutGroup("CombatVars")] public Planet planetTarget;
     [FoldoutGroup("CombatVars")] public float punishmentRecievedWhileEatingPlanet;
     [FoldoutGroup("CombatVars")] public float planetEatingTimeWaitStart;
     [FoldoutGroup("CombatVars")] public float planetEatingTimeWaitMax;
+    [FoldoutGroup("CombatVars")] public bool rechargingDrones;
+    [FoldoutGroup("CombatVars")] public float stunWaveTimeLast;
+
 
     [FoldoutGroup("ManualResources")] public GameObject normalBullet;
     [FoldoutGroup("ManualResources")] public GameObject homingBullet;
@@ -71,6 +82,7 @@ public class Greedy : ODEnemy
         cs = CensusTaker.Instance;
         
         movement = new Vector2(1, 1);
+        stunWaveTimeLast = GameManager.Instance.unpausedTime;
         CloseLowerShip();
     }
     public override void Update() {
@@ -90,9 +102,15 @@ public class Greedy : ODEnemy
         
     }
 
+    enum subStates {
+        MoveRandomly,
+        MoveTwdPlanet,
+        DestroyPlanet
+    }
+
     public void State_Normal() {
 
-        switch(subState) {
+        switch((int)subState) {
             case 0:
                 State_Normal_MoveRandomly();
                 break;
@@ -103,32 +121,62 @@ public class Greedy : ODEnemy
                 State_Normal_DestroyPlanet();
                 break;
         }
-        
+
+
+
+        //Put logic for throwing out attacks or changing states here.
+        #region AttackDecisions
+
+        if(droneSpawnedInBurst < droneToSpawnInBurst) {
+            if (GameManager.Instance.timeSince(droneSpawnedLast) > timeBtwnDroneSpawns) {
+                if (droneCurrentNum < droneMaxCount) {
+                    SpawnDrone();
+                }
+                droneSpawnedInBurst++;
+            }
+
+        }
+
+        float droneBurstTimeWait = (droneBursts % 3 == 0) ? timeBtwnDroneBurstsThird : timeBtwnDroneBursts;
+
+        if (GameManager.Instance.timeSince(droneBurstLast) > droneBurstTimeWait) {
+            droneBurstLast = GameManager.Instance.unpausedTime;
+            droneSpawnedInBurst = 0;
+            droneBursts++;
+        }
+
+        //Throw out Stunwave after certain time period
+        if(GameManager.Instance.timeSince(stunWaveTimeLast) > stunWaveTimeMax && !attackingWithWave && subState != subStates.DestroyPlanet) {
+            StartCoroutine(UseStunWave());
+        }
+
+        //Try eating planet after certain time period (if health is less than thresh and not currently attacking with Stunwave)
+        if(simpleHealth < hpThreshToStartEatingPlanets && GameManager.Instance.timeSince(planetEatingTimeWaitStart) > planetEatingTimeWaitMax && !attackingWithWave) {
+            subState = subStates.MoveTwdPlanet;
+            planetEatingTimeWaitMax = Random.Range(planetEatingTimeRange.x, planetEatingTimeRange.y);
+        }
+
+        #endregion
+
+        //Substates
         void State_Normal_MoveRandomly() {
             playerTarget = PlayerController.Instance;
-            Vector2 offset = cs.OffsetCyclical(transform.position.ConvertTo2D(), playerTarget.transform.position.ConvertTo2D());
 
-            if (playerTarget) {
-                if(GameManager.Instance.timeSince(randomMovementLast) > randomMovementMax) {
-                    randomMovementMax = Random.Range(randomMovementVariance.x, randomMovementVariance.y);
-                    randomMovementLast = GameManager.Instance.unpausedTime;
+            //Move randomly after set time
+            if(GameManager.Instance.timeSince(randomMovementLast) > randomMovementMax) {
+                randomMovementMax = Random.Range(randomMovementVariance.x, randomMovementVariance.y);
+                randomMovementLast = GameManager.Instance.unpausedTime;
 
-                    int pick = Random.Range(0, 2);
-                    if (pick == 0) movement.x = -Mathf.Sign(movement.x);
-                    if (pick == 1) movement.y = -Mathf.Sign(movement.y);
+                int pick = Random.Range(0, 2);
+                if (pick == 0) movement.x = -Mathf.Sign(movement.x);
+                if (pick == 1) movement.y = -Mathf.Sign(movement.y);
 
-                }
-                velocity.x = Mathf.MoveTowards(velocity.x, movement.x * hSpd, hAccel * Time.deltaTime);
-                velocity.y = Mathf.MoveTowards(velocity.y, movement.y * hSpd, hAccel * Time.deltaTime);
             }
-            
+            velocity.x = Mathf.MoveTowards(velocity.x, movement.x * hSpd, hAccel * Time.deltaTime);
+            velocity.y = Mathf.MoveTowards(velocity.y, movement.y * hSpd, hAccel * Time.deltaTime);
 
-            if (droneTotalNum >= firstDroneNumberThresh && !attackingWithWave) {
-                StartCoroutine(UseStunWave());
-            }
-
-            if(!attackingWithWave && GameManager.Instance.timeSince(planetEatingTimeWaitStart) > planetEatingTimeWaitMax && simpleHealth < maxHealth * 0.75f) {
-                subState = 1;
+            if(!attackingWithWave && GameManager.Instance.timeSince(planetEatingTimeWaitStart) > planetEatingTimeWaitMax && simpleHealth < hpThreshToStartEatingPlanets) {
+                subState = subStates.MoveTwdPlanet;
                 planetEatingTimeWaitMax = Random.Range(planetEatingTimeRange.x, planetEatingTimeRange.y);
             }
 
@@ -142,7 +190,7 @@ public class Greedy : ODEnemy
                 velocity.y = Mathf.MoveTowards(velocity.y, Mathf.Clamp(offset.y, -hSpd, hSpd), hAccel * Time.deltaTime);
 
                 if (offset.magnitude < 0.1f) { //Reached the target.
-                    subState = 2; 
+                    subState = subStates.DestroyPlanet; 
                     groundTime = GameManager.Instance.unpausedTime;
                     StartCoroutine(OpenForPlanetConsumption());
                     punishmentRecievedWhileEatingPlanet = 0;
@@ -173,36 +221,28 @@ public class Greedy : ODEnemy
         void State_Normal_DestroyPlanet() { //Destroy the victim planet
             transform.position = planetTarget.transform.position + Vector3.up * planetGrabOffset;
             velocity = Vector2.zero;
-            if (GameManager.Instance.timeSince(groundTime) > groundingTimeMax) {
+            if (GameManager.Instance.timeSince(groundTime) > planetDestroyTimeMax) {
                 Destroy(planetTarget.gameObject);
-                subState = 1;
+                subState = subStates.MoveRandomly;
                 planetTarget = null;
                 planetEatingTimeWaitStart = GameManager.Instance.unpausedTime;
                 CloseLowerShip();
             }
             if(punishmentRecievedWhileEatingPlanet > punishmentWhileEatingPlanetMax) {
-                subState = 1;
+                subState = subStates.MoveRandomly;
                 planetTarget = null;
-                CloseLowerShip();
                 velocity.y = 2;
                 planetEatingTimeWaitStart = GameManager.Instance.unpausedTime;
-            }
-        }
-
-
-        if (droneCurrentNum < droneMaxCount && !attackingWithWave) {
-            if (GameManager.Instance.timeSince(droneSpawnedLast) > timeBtwnDroneSpawns) {
-                Instantiate(drone, transform.position + new Vector3(Random.Range(-2f, 2f), Random.Range(1.5f, 2.5f), 0), Quaternion.identity);
-                droneCurrentNum++;
-                droneTotalNum++;
-                droneSpawnedLast = GameManager.Instance.unpausedTime;
+                CloseLowerShip();
             }
         }
 
     }
 
+    
+
     public override void OnHurt(float damage, Vector2 knockbackSpd, float stunTime, DamageType type, float burn, float knockbackOverride, Hurtbox hurtbox) {
-        //Debug.Log(hurtbox);
+
         if (hurtbox.gameObject == lowerOpenHurtbox || hurtbox.gameObject == lowerClosedHurtbox) {
             lowerShip.SetTrigger("Hurt");
             Debug.Log("Damage to lower half");
@@ -226,6 +266,13 @@ public class Greedy : ODEnemy
             Barrier.transform.localScale = new Vector3(Random.Range(0, 2) * 2 - 1, 1, 1);
             Barrier.gameObject.SetActive(true);
         }
+    }
+
+    void SpawnDrone() {
+        Instantiate(drone, transform.position + new Vector3(Random.Range(-2f, 2f), Random.Range(1.5f, 2.5f), 0), Quaternion.identity);
+        droneCurrentNum++;
+        droneTotalNum++;
+        droneSpawnedLast = GameManager.Instance.unpausedTime;
     }
 
     public IEnumerator UseStunWave() {
@@ -310,9 +357,8 @@ public class Greedy : ODEnemy
             t += Time.deltaTime;
             yield return null;
         }
-
+        stunWaveTimeLast = GameManager.Instance.unpausedTime;
         attackingWithWave = false;
-        droneTotalNum = 0;
     }
 
     public IEnumerator OpenForPlanetConsumption() {

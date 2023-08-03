@@ -3972,6 +3972,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreedyDrone
       objectReference: {fileID: 0}
+    - target: {fileID: 2092029687402686655, guid: 3b2e6b22c33f0cc4197dd9d142a32c6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b2e6b22c33f0cc4197dd9d142a32c6e, type: 3}
 --- !u!1001 &7624507597958525696
