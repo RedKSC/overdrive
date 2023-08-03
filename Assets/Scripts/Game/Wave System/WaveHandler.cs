@@ -187,11 +187,11 @@ public class WaveHandler : SerializedMonoBehaviour {
     public static void DialogueFinished() {
         Debug.Log("Dialogue is finished boys");
         switch(Instance.postDialogueAction) {
-            case (PostDialogueActions.WaveStart):
+            case PostDialogueActions.WaveStart:
                 WaveEvents.WaveStart();
                 break;
-            case (PostDialogueActions.ShopOpen):
-                Debug.Log("We gonna open da shop now");
+            case PostDialogueActions.ShopOpen:
+                //Debug.Log("We gonna open da shop now");
                 GameEvents.SetShopState(true);
                 break;
         }

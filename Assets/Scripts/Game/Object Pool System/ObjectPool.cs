@@ -19,7 +19,7 @@ public class ObjectPool : MonoBehaviour {
     Dictionary<int, Queue<GameObject>> pools = new Dictionary<int, Queue<GameObject>>();
 
     //Creates and initializes an object pool
-    public int CreateObjectPool(ObjectPoolData dta) {
+    public int CreateObjectPool(ObjectPoolData dta, bool initialize = true) {
         if (poolLookup.ContainsKey(dta.Key)) {
             Debug.LogWarning($"Object pool with the key '{dta.Key}' already exists!", gameObject);
             return -1;
@@ -31,7 +31,9 @@ public class ObjectPool : MonoBehaviour {
 
         pools.Add(hash, new Queue<GameObject>());
 
-        InitializePool(hash, dta.Object, dta.InitialCount);
+        if (initialize) {
+            InitializePool(hash, dta.Object, dta.InitialCount);
+        }
 
         return hash;
     }
