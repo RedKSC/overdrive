@@ -582,8 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9402252956e6cf4ca328762c99e490d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VFXPools:
-  - {fileID: 11400000, guid: 45f2012128b70b94188a5e8e608259a8, type: 2}
+  VFXPools: []
 --- !u!1 &193284279
 GameObject:
   m_ObjectHideFlags: 0
